@@ -27,4 +27,21 @@ exports.get_all_notes = async (req, res) => {
   return res.status(200).json({ data });
 }
 
+exports.get_note_by_email = async (req, res) => {
+  const email = req.query.email; 
+
+  let data;
+  try {
+    data = await android_NOTES_DATA_MODEL.find({ email: email });
+  } catch (error) {
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+
+  if (!data) {
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+
+  return res.status(200).json({ data });
+}
+
 
