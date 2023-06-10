@@ -32,7 +32,7 @@ exports.get_note_by_email = async (req, res) => {
 
   let data;
   try {
-    data = await android_NOTES_DATA_MODEL.find({ email: email });
+    data = await android_NOTES_DATA_MODEL.find({ mail: email });
   } catch (error) {
     return res.status(500).json({ message: "Internal Server Error" });
   }
