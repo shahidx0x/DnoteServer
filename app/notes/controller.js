@@ -28,7 +28,7 @@ exports.get_all_notes = async (req, res) => {
 }
 
 exports.get_note_by_email = async (req, res) => {
-  const email = req.query.email; 
+  const email = req.params.email; 
 
   let data;
   try {
