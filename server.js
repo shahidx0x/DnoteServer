@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 const server_log = require("./middleware/server_log");
 const connectDB = require("./config/database");
 const auth_router = require("./app/auth/router");
+const notes_router = require("./app/notes/router");
 require("colors");
 
 //  middleware
@@ -20,6 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(server_log);
 
 app.use(auth_router);
+app.use(notes_router);
 
 // Connect to the database
 connectDB();
