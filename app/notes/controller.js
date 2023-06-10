@@ -40,8 +40,16 @@ exports.get_note_by_email = async (req, res) => {
   if (!data) {
     return res.status(500).json({ message: "Internal Server Error" });
   }
-
   return res.status(200).json({ data });
 }
-
+exports.delete_by_id = async (req, res) => {
+  const noteId = req.params.id; 
+  try {
+    await android_NOTES_DATA_MODEL.deleteOne({ _id: noteId });
+    res.status(200).json({ message: 'Deletion successful' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error occurred during deletion' });
+  }
+}
 
