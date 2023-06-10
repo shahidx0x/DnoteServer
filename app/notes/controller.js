@@ -14,3 +14,17 @@ exports.create_notes = async (req, res) => {
   }
 };
 
+exports.get_all_notes = async (req, res) => {
+  let data;
+  try {
+    data = await android_NOTES_DATA_MODEL.find();
+  } catch (error) {
+    return next(error);
+  }
+  if (!data) {
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+  return res.status(200).json({ data });
+}
+
+
