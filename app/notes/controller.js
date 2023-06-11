@@ -1,6 +1,6 @@
 const android_NOTES_DATA_MODEL = require("./model");
 exports.create_notes = async (req, res) => {
-  const { mail, notes_title, notes_content } = req.body;
+  const { mail, notes_title, notes_content} = req.body;
   try {
     const payload = await android_NOTES_DATA_MODEL.create({
       mail,
