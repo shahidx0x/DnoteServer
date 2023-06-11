@@ -42,6 +42,28 @@ exports.get_note_by_email = async (req, res) => {
   }
   return res.status(200).json({ data });
 }
+
+exports.edit_note_by_id = async (req, res) => {
+  const id = req.params.id;
+  const updated_data = req.body;
+  try {
+    const note = await android_NOTES_DATA_MODEL.findById(id);
+    if (!note) {
+      return res.status(404).json({ error: 'Note not found' });
+    }
+    
+    note.notes_title = updated_data.title;
+    note.notes_content = updated_data.content;
+    const updatedNote = await note.save();
+    
+    res.json(updatedNote);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server error' });
+  }
+};
+
+
 exports.delete_by_id = async (req, res) => {
   const noteId = req.params.id; 
   try {
