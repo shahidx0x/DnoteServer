@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const notesData = new Schema(
   {
+    img:String,
     mail: String,
     notes_title: String,
     notes_content: String,
